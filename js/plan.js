@@ -69,6 +69,10 @@
       <div class="score-dial"><span class="score-num">${plan.overall}</span><span class="score-max">/100</span></div>
       <p class="score-word">That’s ${scoreWord(plan.overall)}.</p>
       <p class="score-note">This number is a snapshot of habits, not a verdict on you — and definitely not a diagnosis. It exists so that in eight weeks you can beat it.</p>
+      <div class="share-row">
+        <button class="btn" id="share-btn">Share my score</button>
+        <span class="cta-small" id="share-note" aria-live="polite"></span>
+      </div>
     </section>
 
     ${plan.safetyNotices.length ? `
@@ -128,6 +132,26 @@
       <p>Everything on this page is educational information mapped from your self-reported answers. It is not medical advice, a diagnosis, or a treatment plan, and no doctor–patient relationship exists. Talk to a healthcare professional before changing medication, diet, or exercise — especially if you have a health condition. <a href="disclaimer.html">Full disclaimer</a>.</p>
     </section>
   `;
+
+  // Share the score only — never the answers. This is the growth loop that
+  // respects the privacy promise: nothing about the user leaves their device.
+  const shareBtn = document.getElementById('share-btn');
+  const shareNote = document.getElementById('share-note');
+  const site = (CONFIG.canonicalOrigin || location.origin + location.pathname.replace(/plan\.html$/, '')) || '';
+  const shareUrl = site.replace(/plan\.html$/, '') + 'index.html';
+  const shareText = `I scored ${plan.overall}/100 on my Baseline health check — the honest, no-wearable one. Take yours free (no signup, nothing leaves your device):`;
+  shareBtn.addEventListener('click', async () => {
+    const data = { title: 'Baseline', text: shareText, url: shareUrl.replace(/index\.html$/, '') };
+    if (navigator.share) {
+      try { await navigator.share(data); return; } catch (e) { /* fall through to copy */ }
+    }
+    try {
+      await navigator.clipboard.writeText(shareText + ' ' + data.url);
+      shareNote.textContent = 'Copied — paste it anywhere. (Your answers stay here; only the score goes.)';
+    } catch (e) {
+      shareNote.textContent = shareText + ' ' + data.url;
+    }
+  });
 
   document.getElementById('plan-reset').addEventListener('click', () => {
     if (confirm('Delete your answers and plan from this device? This can’t be undone.')) {

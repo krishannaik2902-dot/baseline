@@ -21,9 +21,9 @@
     if (CONFIG.stripePaymentLink) {
       el.innerHTML = `
         <a class="btn btn-primary btn-big" href="${CONFIG.stripePaymentLink}" rel="noopener">
-          Get Pro — ${CONFIG.proPriceMonthly}/month
+          Get Pro — ${CONFIG.proPriceOneTime}, one payment
         </a>
-        <p class="cta-small">${CONFIG.proPriceNote} · cancel any time · 14-day refund, no questions</p>`;
+        <p class="cta-small">${CONFIG.proPriceNote}</p>`;
       return;
     }
 

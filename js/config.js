@@ -7,7 +7,7 @@
 
 const CONFIG = {
   brand: 'Baseline',                 // display name; also used in <title>s
-  canonicalOrigin: '',               // set at deploy, e.g. 'https://example.surge.sh'
+  canonicalOrigin: 'https://knowyourbaseline.surge.sh',
 
   // --- Pro tier -----------------------------------------------------------
   // Until a payment link is set, the Pro CTA runs in founding-member waitlist
@@ -16,15 +16,15 @@ const CONFIG = {
   //      for a recurring price. No code needed on their side.
   //   2. Paste the URL below. Buy buttons go live immediately.
   stripePaymentLink: '',
-  proPriceMonthly: '$7',
-  proPriceNote: 'or $49/year',
-  foundingDiscountCopy: 'Founding members get 40% off for life when Pro launches.',
+  proPriceOneTime: '$29',
+  proPriceNote: 'One payment. Not a subscription. 14-day refund, no questions.',
+  foundingDiscountCopy: 'Founding members get Pro for $17 instead of $29 when it opens — and that price includes all future updates.',
 
   // --- Waitlist / contact ---------------------------------------------------
   // FormSubmit AJAX endpoint (set after activation at deploy time).
   // Falls back to a mailto: link when empty, so the CTA never dead-ends.
   formEndpoint: '',
-  contactEmail: '',
+  contactEmail: 'product@louisa.ai',
 };
 
 if (typeof module !== 'undefined') module.exports = { CONFIG };

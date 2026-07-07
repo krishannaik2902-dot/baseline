@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Your plan — Baseline</title>
+  <meta name="description" content="Your baseline score and personalised plan.">
+  <meta name="robots" content="noindex">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+</head>
+<body>
+  <header class="site-head">
+    <div class="shell">
+      <a class="wordmark" href="index.html">Baseline</a>
+      <nav class="site-nav">
+        <a href="tools/index.html">Tools</a>
+        <a href="learn/index.html">Journal</a>
+        <a href="pricing.html">Pricing</a>
+        <a class="nav-cta" href="assessment.html">Retake</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="plan-shell">
+    <div id="plan-root">
+      <noscript><p>Your plan is computed and stored entirely in your browser, so this page needs JavaScript.</p></noscript>
+    </div>
+  </main>
+
+  <footer class="site-foot">
+    <div class="shell">
+      <p class="foot-disclaimer">Baseline is educational information, not medical advice, diagnosis, or treatment. No doctor–patient relationship is created by using it. Talk to a healthcare professional before changing your diet, exercise, supplements, or medication.</p>
+      <div class="foot-links">
+        <a href="methodology.html">Methodology</a>
+        <a href="disclaimer.html">Disclaimer</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/config.js"></script>
+  <script src="js/store.js"></script>
+  <script src="js/engine.js"></script>
+  <script src="js/questions.js"></script>
+  <script src="js/protocols.js"></script>
+  <!-- pro.js defines renderProCTA and must load before plan.js calls it -->
+  <script src="js/pro.js"></script>
+  <script src="js/plan.js"></script>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="canonical" href="https://knowyourbaseline.surge.sh/methodology.html">
+  <meta property="og:url" content="https://knowyourbaseline.surge.sh/methodology.html">
+  <title>Methodology — how Baseline scores you</title>
+  <meta name="description" content="How the Baseline rules engine works: eight domains, evidence-based weights, honest grading, and a full list of sources. No AI, no black box — the code is public.">
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+</head>
+<body>
+  <header class="site-head">
+    <div class="shell">
+      <a class="wordmark" href="index.html">Baseline</a>
+      <nav class="site-nav">
+        <a href="plan.html">Your plan</a>
+        <a href="tools/index.html">Tools</a>
+        <a href="learn/index.html">Journal</a>
+        <a href="pricing.html">Pricing</a>
+        <a class="nav-cta" href="assessment.html">Take the assessment</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="prose">
+    <h1>Methodology</h1>
+    <p class="updated">Last updated 7 July 2026</p>
+    <p class="dek">No AI, no black box, no proprietary algorithm mystique. Baseline is a deterministic rules engine — the same answers always produce the same plan — and the code is public.</p>
+
+    <h2>The model</h2>
+    <p>Your 29 answers are scored across eight domains. Each domain is weighted by how much the research says it moves long-term health outcomes — sleep and movement count four times as much as daily structure, because in the evidence, they do:</p>
+    <table>
+      <tr><th>Domain</th><th>Weight</th><th>Why</th></tr>
+      <tr><td>Sleep</td><td>20</td><td>Short and irregular sleep tracks with all-cause mortality, metabolic and mental-health outcomes across large cohorts.</td></tr>
+      <tr><td>Movement</td><td>20</td><td>Cardiorespiratory fitness and strength are two of the strongest modifiable predictors of healthspan in the literature.</td></tr>
+      <tr><td>Nutrition</td><td>15</td><td>Dietary pattern matters more than any single food; ultra-processed share of diet is the strongest single signal.</td></tr>
+      <tr><td>Stress &amp; Mind</td><td>15</td><td>Chronic stress and persistent low mood have measurable physiological costs, not just subjective ones.</td></tr>
+      <tr><td>People &amp; Purpose</td><td>10</td><td>Social connection shows mortality effects comparable to major clinical risk factors (Holt-Lunstad 2010, 2015).</td></tr>
+      <tr><td>Substances</td><td>10</td><td>Smoking remains the single largest avoidable risk; alcohol’s curve is worse than the 2010s consensus suggested.</td></tr>
+      <tr><td>Body Basics</td><td>5</td><td>Self-reported weight status is a weak signal on its own — we weight it accordingly.</td></tr>
+      <tr><td>Daily Structure</td><td>5</td><td>Light exposure, meal timing and outdoor time are real but smaller levers that mostly serve the bigger domains.</td></tr>
+    </table>
+    <p>Within each domain, questions carry their own weights (how much you sleep matters more than where your phone charges). Your overall baseline is the weighted average of your answered domains — questions you skip are simply left out, not guessed at.</p>
+
+    <h2>What the number is, and isn’t</h2>
+    <p>Your score is a <strong>snapshot of current habits</strong>, weighted by evidence. It is not a “biological age”, not a life-expectancy prediction, and not a diagnosis. We deliberately refuse to translate habits into “you are ageing 0.8 years per year”-style claims: the scientists who build epigenetic clocks say themselves that those instruments were designed for study populations, not individual verdicts. A habits score has a humbler and more useful property — when it moves, it’s because you changed something you control.</p>
+
+    <h2>Safety comes before scoring</h2>
+    <p>Certain answers raise flags that change your plan before any scoring happens: pregnancy or regular medication removes supplement suggestions; chest pain during exertion removes vigorous-exercise suggestions and adds a see-a-doctor notice; a history of disordered eating removes fasting and calorie-focused framing; signs of a possible sleep disorder or a heavy stretch of low mood add professional-help notices with crisis lines. These flags are never paywalled and never will be.</p>
+
+    <h2>How recommendations are chosen</h2>
+    <p>Every recommendation card carries: the <strong>rule that fired</strong> (which answers or scores triggered it), an <strong>evidence grade</strong>, an <strong>effort level</strong>, its <strong>cost</strong>, any <strong>cautions</strong>, and a <strong>named source</strong>. The engine ranks cards by how weak the relevant domain is, how much that domain matters, and how foundational the habit is — so five small, high-yield changes surface first, not a forty-item overhaul.</p>
+    <p>Evidence grades, honestly applied:</p>
+    <ul>
+      <li><span class="badge badge-strong">Strong</span> — multiple good human trials or large consistent cohort evidence. Example: resistance training, sleep regularity, smoking cessation.</li>
+      <li><span class="badge badge-moderate">Moderate</span> — decent human evidence with real caveats. Example: sauna cohort data, time-restricted eating.</li>
+      <li><span class="badge badge-emerging">Emerging / debated</span> — mechanistically interesting, unproven in humans, or contested. We say so out loud, and most of it stays on the <a href="skeptics.html">skeptics page</a> rather than in your plan.</li>
+    </ul>
+
+    <h2>Sources</h2>
+    <p>The engine draws on published research and public protocols, including: Matthew Walker’s sleep research and <em>Why We Sleep</em>; Peter Attia’s <em>Outlive</em> and its underlying literature on VO₂max, strength and the “four horsemen” framing; Andy Galpin’s exercise-science work; Jari Laukkanen’s Finnish sauna cohort studies; Susanna Søberg’s cold-exposure research; Julianne Holt-Lunstad’s meta-analyses on social connection and mortality; Huberman Lab’s protocol summaries (used where they match the primary literature); and Bryan Johnson’s Blueprint (reported editorially — mostly as evidence that the free basics do the heavy lifting). Each card cites its specific source.</p>
+
+    <h2>Who’s behind this</h2>
+    <p>Baseline is a small, independent, self-funded project. There are no doctors on staff — which is precisely why the engine only makes claims it can cite, grades its own confidence, recommends professionals often, and keeps the safety rails outside the paywall. We sell no supplements, run no ads, take no affiliate commissions, and never see your answers. The scoring engine and question bank are open to inspection at <a href="https://github.com/krishannaik2902-dot/baseline" rel="noopener">github.com/krishannaik2902-dot/baseline</a> — if you think a weight or a rule is wrong, the issues tab is right there.</p>
+    <p>Baseline is not affiliated with, sponsored by, or endorsed by any researcher or public figure named on this site.</p>
+
+    <h2>Limitations, stated plainly</h2>
+    <ul>
+      <li>Everything is self-reported. The engine can’t catch what you don’t tell it, and people are famously generous with themselves about vegetables.</li>
+      <li>No biomarkers. A habits score can’t see your blood pressure, lipids, or glucose — a check-up can, and asking your doctor for one is on the plan for most people.</li>
+      <li>Research reports averages. Your mileage will vary, in both directions.</li>
+      <li>The weights are judgement calls anchored in evidence, not physical constants. We publish them so they can be argued with.</li>
+    </ul>
+  </main>
+
+  <footer class="site-foot">
+    <div class="shell">
+      <p class="foot-disclaimer">Baseline is educational information, not medical advice, diagnosis, or treatment. No doctor–patient relationship is created by using it.</p>
+      <div class="foot-links">
+        <a href="skeptics.html">What we’re skeptical of</a>
+        <a href="disclaimer.html">Disclaimer</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+      </div>
+      <p class="foot-fine">© 2026 Baseline.</p>
+    </div>
+  </footer>
+</body>
+</html>

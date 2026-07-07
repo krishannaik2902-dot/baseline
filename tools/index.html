@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="canonical" href="https://knowyourbaseline.surge.sh/tools/">
+  <meta property="og:url" content="https://knowyourbaseline.surge.sh/tools/">
+  <title>Free tools — caffeine cut-off, protein target, Zone 2 heart rate — Baseline</title>
+  <meta name="description" content="Three free, no-signup calculators: your caffeine cut-off time, your daily protein target, and your Zone 2 heart-rate range. Everything runs in your browser.">
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+  <meta property="og:title" content="Free health tools — Baseline">
+  <meta property="og:description" content="Caffeine cut-off, protein target, Zone 2 heart rate. Free, no signup, nothing leaves your browser.">
+  <meta property="og:type" content="website">
+</head>
+<body>
+  <header class="site-head">
+    <div class="shell">
+      <a class="wordmark" href="../index.html">Baseline</a>
+      <nav class="site-nav">
+        <a href="../plan.html">Your plan</a>
+        <a href="index.html" aria-current="page">Tools</a>
+        <a href="../learn/index.html">Journal</a>
+        <a href="../pricing.html">Pricing</a>
+        <a class="nav-cta" href="../assessment.html">Take the assessment</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="prose">
+    <h1>Free tools</h1>
+    <p class="dek">Three quick calculators, no sign-up, nothing sent anywhere — the maths runs in your browser. Each one is a piece of a fuller plan; the <a href="../assessment.html">assessment</a> ties them together.</p>
+
+    <!-- ---------------------------------------------- caffeine cut-off -->
+    <h2 id="caffeine">Caffeine cut-off</h2>
+    <p>Caffeine has a half-life of about 5–6 hours, so an afternoon coffee is still working at bedtime. A common rule of thumb is to stop 8–10 hours before bed. Tell it your bedtime:</p>
+    <div class="calc">
+      <label for="bedtime">Your usual bedtime</label>
+      <input type="time" id="bedtime" value="23:00">
+      <div class="calc-result" id="caffeine-out" aria-live="polite"></div>
+    </div>
+
+    <!-- ------------------------------------------------ protein target -->
+    <h2 id="protein">Daily protein target</h2>
+    <p>Protein defends muscle as you age. A widely used active-and-older-adult range is around 1.6 grams per kilogram of bodyweight — higher than the old 0.8g/kg guideline, which was set to prevent deficiency, not to preserve muscle. This gives you a sensible range, not a rule.</p>
+    <div class="calc">
+      <label for="weight">Your weight</label>
+      <input type="number" id="weight" min="30" max="250" value="75" style="max-width:8rem"> <span id="weight-unit-label">kg</span>
+      <label for="weight-unit">Units</label>
+      <select id="weight-unit"><option value="kg">Kilograms</option><option value="lb">Pounds</option></select>
+      <div class="calc-result" id="protein-out" aria-live="polite"></div>
+    </div>
+
+    <!-- ---------------------------------------------- zone 2 heart rate -->
+    <h2 id="zone2">Zone 2 heart-rate range</h2>
+    <p>Zone 2 is the easy, conversational pace that builds your aerobic base — the pace most people skip because it feels too gentle. This uses the standard age estimate of maximum heart rate (about 220 minus your age) and takes 60–70% of it. It’s an estimate; the talk test (can you speak in full sentences?) is the real guide.</p>
+    <div class="calc">
+      <label for="age">Your age</label>
+      <input type="number" id="age" min="16" max="100" value="40" style="max-width:8rem">
+      <div class="calc-result" id="zone2-out" aria-live="polite"></div>
+    </div>
+
+    <hr>
+    <p><em>These are simple estimates for general education, not medical advice. Heart-rate formulas vary between people; if you have a heart condition, talk to a doctor before using target heart rates.</em></p>
+    <p><a class="btn btn-primary" href="../assessment.html">Get the full picture — take the assessment</a></p>
+  </main>
+
+  <footer class="site-foot">
+    <div class="shell">
+      <p class="foot-disclaimer">Baseline is educational information, not medical advice, diagnosis, or treatment.</p>
+      <div class="foot-links">
+        <a href="../methodology.html">Methodology</a>
+        <a href="../disclaimer.html">Disclaimer</a>
+        <a href="../privacy.html">Privacy</a>
+        <a href="../terms.html">Terms</a>
+      </div>
+      <p class="foot-fine">© 2026 Baseline.</p>
+    </div>
+  </footer>
+
+  <script>
+    // caffeine cut-off
+    var bed = document.getElementById('bedtime');
+    var caffOut = document.getElementById('caffeine-out');
+    function fmt(mins) {
+      mins = ((mins % 1440) + 1440) % 1440;
+      var h = Math.floor(mins / 60), m = mins % 60;
+      var ampm = h < 12 ? 'am' : 'pm';
+      var h12 = h % 12; if (h12 === 0) h12 = 12;
+      return h12 + ':' + (m < 10 ? '0' : '') + m + ampm;
+    }
+    function calcCaffeine() {
+      if (!bed.value) return;
+      var parts = bed.value.split(':');
+      var bedMins = parseInt(parts[0], 10) * 60 + parseInt(parts[1], 10);
+      var early = bedMins - 10 * 60, late = bedMins - 8 * 60;
+      caffOut.innerHTML = 'Last caffeine by <strong>' + fmt(early) + '</strong>&thinsp;–&thinsp;<strong>' + fmt(late) +
+        '</strong>.<small>The earlier end if your sleep is fragile; the later end if you tolerate caffeine well. After that: decaf, herbal tea, or a walk.</small>';
+    }
+    bed.addEventListener('input', calcCaffeine); calcCaffeine();
+
+    // protein target
+    var wt = document.getElementById('weight'), unit = document.getElementById('weight-unit'),
+        unitLabel = document.getElementById('weight-unit-label'), protOut = document.getElementById('protein-out');
+    function calcProtein() {
+      var w = parseFloat(wt.value); if (!w) return;
+      unitLabel.textContent = unit.value;
+      var kg = unit.value === 'lb' ? w * 0.453592 : w;
+      var low = Math.round(kg * 1.2), high = Math.round(kg * 1.6);
+      protOut.innerHTML = 'Aim for roughly <strong>' + low + '–' + high + ' g</strong> of protein a day.' +
+        '<small>Spread across meals — a palm-sized source at each. The higher end if you’re very active or over about 60. Not a target to obsess over; a direction to lean.</small>';
+    }
+    wt.addEventListener('input', calcProtein); unit.addEventListener('change', calcProtein); calcProtein();
+
+    // zone 2
+    var age = document.getElementById('age'), z2Out = document.getElementById('zone2-out');
+    function calcZone2() {
+      var a = parseInt(age.value, 10); if (!a) return;
+      var hrMax = 220 - a;
+      var low = Math.round(hrMax * 0.60), high = Math.round(hrMax * 0.70);
+      z2Out.innerHTML = 'Zone 2 is roughly <strong>' + low + '–' + high + ' bpm</strong> (est. max ~' + hrMax + ').' +
+        '<small>If a heart-rate monitor isn’t handy, use the talk test: you should be able to hold a conversation but not sing. That feeling is the real target.</small>';
+    }
+    age.addEventListener('input', calcZone2); calcZone2();
+  </script>
+</body>
+</html>

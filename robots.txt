@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /plan.html
+Disallow: /assessment.html
+
+Sitemap: https://knowyourbaseline.surge.sh/sitemap.xml

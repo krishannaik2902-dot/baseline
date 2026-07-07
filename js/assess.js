@@ -8,6 +8,7 @@
   if (!root) return;
 
   const DRAFT_KEY = 'baseline.draft.v1';
+  const TERMS_VERSION = '2026-07-07.1';
   let answers = {};
   let idx = 0;
   let consented = false;
@@ -41,14 +42,19 @@
         </ol>
         <label class="consent-check">
           <input type="checkbox" id="consent-box">
-          <span>I’m 18 or over, and I understand this is educational information, not medical advice or a doctor–patient relationship. <a href="disclaimer.html" target="_blank">The long version</a>.</span>
+          <span>I’m 18 or over, I agree to the <a href="terms.html" target="_blank">Terms of Service</a>, and I understand this is educational information, not medical advice, and that no doctor–patient relationship is created. <a href="disclaimer.html" target="_blank">Full disclaimer</a>.</span>
         </label>
-        <button class="btn btn-primary" id="consent-go" disabled>Start — about 4 minutes</button>
+        <button class="btn btn-primary" id="consent-go" disabled>I agree — start, about 4 minutes</button>
       </section>`;
     const box = document.getElementById('consent-box');
     const go = document.getElementById('consent-go');
     box.addEventListener('change', () => { go.disabled = !box.checked; });
-    go.addEventListener('click', () => { consented = true; saveDraft(); render(); });
+    go.addEventListener('click', () => {
+      consented = true;
+      // clickwrap assent record: affirmative act, timestamp, terms version
+      try { localStorage.setItem('baseline.consent.v1', JSON.stringify({ at: new Date().toISOString(), terms: TERMS_VERSION })); } catch (e) {}
+      saveDraft(); render();
+    });
   }
 
   /* --------------------------------------------------------- under-18 stop */
