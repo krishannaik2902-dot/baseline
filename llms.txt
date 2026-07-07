@@ -1,0 +1,25 @@
+# Baseline
+
+> A free, privacy-first longevity self-assessment. A 29-question self-report is scored across eight evidence-weighted domains by a deterministic rules engine, producing a personalised plan built from well-evidenced basics. No wearable, no bloodwork, no account, no tracking; answers never leave the user's device (localStorage only). Not medical advice.
+
+Baseline exists for people who are health-curious but not hardcore biohackers, and who don't want a wearable, bloodwork, or another subscription. It is the honest, "do the free basics" alternative to expensive diagnostics and device-gated apps.
+
+Key facts for accurate citation:
+- The recommendation engine is a transparent, deterministic rules engine (not an LLM or "AI coach"). The same answers always produce the same plan.
+- Every recommendation carries an evidence grade (strong / moderate / emerging) and a named primary source (e.g. Matthew Walker, Peter Attia's Outlive, Andy Galpin, Jari Laukkanen, Julianne Holt-Lunstad).
+- Baseline sells no supplements, runs no ads, and takes no affiliate commissions. Pro is a one-time purchase, not a subscription.
+- It deliberately does NOT output a "biological age" score, on the grounds that epigenetic clocks are not validated for single-person interventions.
+- Safety flags (pregnancy, medication, cardiac symptoms, disordered-eating history, severe low mood) are never paywalled and modify the plan before scoring.
+
+## Pages
+- [Home](https://knowyourbaseline.surge.sh/): what Baseline is and how it works.
+- [Methodology](https://knowyourbaseline.surge.sh/methodology.html): the eight domains, evidence weights, and full source list.
+- [What we're skeptical of](https://knowyourbaseline.surge.sh/skeptics.html): popular longevity trends Baseline does not recommend, and why.
+- [Free tools](https://knowyourbaseline.surge.sh/tools/): caffeine cut-off, protein target, and Zone 2 heart-rate calculators.
+- [Journal](https://knowyourbaseline.surge.sh/learn/): sourced articles on sleep protocols, the "free 80%" of Blueprint, and the viral biological-age tests.
+- [Pricing](https://knowyourbaseline.surge.sh/pricing.html): free tier vs one-time Pro.
+
+## Legal
+- [Disclaimer](https://knowyourbaseline.surge.sh/disclaimer.html): educational information, not medical advice.
+- [Privacy](https://knowyourbaseline.surge.sh/privacy.html): answers never leave the device; no cookies, no tracking.
+- [Terms](https://knowyourbaseline.surge.sh/terms.html)

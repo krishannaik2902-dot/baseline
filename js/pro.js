@@ -40,6 +40,7 @@
           <input type="email" required placeholder="you@example.com" aria-label="Email address">
           <button class="btn btn-primary" type="submit">Save my spot</button>
         </div>
+        <input type="text" class="waitlist-heard" placeholder="Optional: how did you hear about us?" aria-label="How did you hear about us" style="width:100%;margin-top:0.5rem;font-family:var(--sans);font-size:0.92rem;padding:0.6rem 0.9rem;border:1px solid var(--line);background:var(--paper);color:var(--ink);border-radius:2px;">
         <p class="waitlist-status" aria-live="polite"></p>
       </form>`;
 
@@ -47,7 +48,8 @@
     const status = el.querySelector('.waitlist-status');
     form.addEventListener('submit', async (e) => {
       e.preventDefault();
-      const email = form.querySelector('input').value.trim();
+      const email = form.querySelector('input[type=email]').value.trim();
+      const heard = (form.querySelector('.waitlist-heard') || {}).value || '';
       if (!email) return;
 
       if (!CONFIG.formEndpoint) {
@@ -63,7 +65,7 @@
         const res = await fetch(CONFIG.formEndpoint, {
           method: 'POST',
           headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-          body: JSON.stringify({ email, _subject: 'Founding list signup', page: context }),
+          body: JSON.stringify({ email, heard, _subject: 'Founding list signup', page: context }),
         });
         if (!res.ok) throw new Error('bad status ' + res.status);
         markJoined(email);
