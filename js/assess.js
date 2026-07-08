@@ -42,7 +42,7 @@
         <h1>Two things, plainly.</h1>
         <ol class="consent-points">
           <li><strong>This is not medical advice.</strong> It’s an educational tool that maps your answers to well-known habits and protocols. It can’t diagnose anything, and it doesn’t know your medical history. Anything you change, you change at your own judgement — and ideally with your doctor’s.</li>
-          <li><strong>Your answers stay on this device.</strong> No account, no cookies, no server. We literally cannot see them. Clear your browser data and they’re gone.</li>
+          <li><strong>Your answers stay on this device.</strong> No account, no cookies, no server. We literally cannot see them. Clear your browser data and they’re gone. (We do count completions — anonymously, with nothing that identifies you; the full list and an off switch are in the <a href="privacy.html" target="_blank">privacy policy</a>.)</li>
         </ol>
         <label class="consent-check">
           <input type="checkbox" id="consent-box">
@@ -57,6 +57,7 @@
       consented = true;
       // clickwrap assent record: affirmative act, timestamp, terms version
       try { localStorage.setItem('baseline.consent.v1', JSON.stringify({ at: new Date().toISOString(), terms: TERMS_VERSION })); } catch (e) {}
+      if (window.Stats) Stats.event('assessment-started');
       saveDraft(); render();
     });
   }
@@ -165,6 +166,7 @@
     // engine improvements apply to existing users automatically
     Store.save({ answers, completedAt: new Date().toISOString() });
     try { localStorage.removeItem(DRAFT_KEY); } catch (e) {}
+    if (window.Stats) Stats.event('assessment-completed');
     window.location.href = 'plan.html';
   }
 

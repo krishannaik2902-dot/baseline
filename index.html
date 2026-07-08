@@ -10,7 +10,7 @@
   <link rel="stylesheet" href="css/styles.css">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <meta property="og:title" content="Baseline — know where you stand">
-  <meta property="og:description" content="A free longevity self-assessment. 29 questions, a scored baseline, a plan built from the boring, well-evidenced basics. No account. No tracking.">
+  <meta property="og:description" content="A free longevity self-assessment. 29 questions, a scored baseline, a plan built from the boring, well-evidenced basics. No account. No cookies.">
   <meta property="og:image" content="https://knowyourbaseline.surge.sh/assets/og.png">
   <meta property="og:type" content="website">
   <meta name="twitter:card" content="summary_large_image">
@@ -53,7 +53,7 @@
         <span>No wearable</span>
         <span>No bloodwork</span>
         <span>No account</span>
-        <span>No tracking</span>
+        <span>No cookies</span>
         <span>Nothing for sale inside your results</span>
       </div>
     </div>
@@ -124,13 +124,14 @@
       <div class="shell">
         <span class="kicker"><span class="no">§ 04</span>Your data</span>
         <h2>We can’t sell what we <em>never see.</em></h2>
-        <p>Your answers are stored in your browser’s local storage and nowhere else. There is no server to breach, no account to hack, and no analytics script watching you scroll.</p>
+        <p>Your answers are stored in your browser’s local storage and nowhere else. There is no server to breach, no account to hack, and no third-party script watching you scroll.</p>
         <div class="dark-points">
           <div><b>No cookies, no banner</b><p>There’s no cookie consent pop-up because there are no cookies. At all.</p></div>
-          <div><b>Nothing leaves your device</b><p>The scoring runs in your browser. We couldn’t read your answers if we wanted to.</p></div>
+          <div><b>Your answers never leave</b><p>The scoring runs in your browser. We couldn’t read your answers if we wanted to.</p></div>
           <div><b>Delete it any time</b><p>One button wipes everything. Clear your browser data and it’s gone — that’s the deal.</p></div>
         </div>
-        <p style="margin-top:2.2rem; margin-bottom:0;"><a href="privacy.html">The whole privacy policy is four paragraphs →</a></p>
+        <p style="margin-top:2.2rem;">One honest caveat: we count usage <strong style="color:var(--paper-on-dark);">anonymously</strong> — page views, completions, and coarse score bands, with no cookies and nothing that identifies you — because we need to know whether this thing is working. The complete list of what we count, and a one-click switch to turn it off, is in the privacy policy.</p>
+        <p style="margin-bottom:0;"><a href="privacy.html">The whole privacy policy, including everything we count →</a></p>
       </div>
     </section>
 
@@ -189,11 +190,12 @@
           <a href="terms.html">Terms</a>
         </nav>
       </div>
-      <p class="foot-fine"><span>© 2026 Baseline. Made by a human and a rules engine, in that order.</span><span>Set in Newsreader &amp; Hanken Grotesk. No cookies, no trackers — view source and check.</span></p>
+      <p class="foot-fine"><span>© 2026 Baseline. Made by a human and a rules engine, in that order.</span><span>Set in Newsreader &amp; Hanken Grotesk. No cookies, no identifiers — anonymous counts only. View source and check.</span></p>
     </div>
   </footer>
 
   <script src="js/config.js"></script>
+  <script src="js/stats.js"></script>
   <script src="js/pro.js"></script>
   <script>if (window.renderProCTA) renderProCTA(document.getElementById('home-cta'), 'home');</script>
 </body>

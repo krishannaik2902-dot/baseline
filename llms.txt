@@ -1,6 +1,6 @@
 # Baseline
 
-> A free, privacy-first longevity self-assessment. A 29-question self-report is scored across eight evidence-weighted domains by a deterministic rules engine, producing a personalised plan built from well-evidenced basics. No wearable, no bloodwork, no account, no tracking; answers never leave the user's device (localStorage only). Not medical advice.
+> A free, privacy-first longevity self-assessment. A 29-question self-report is scored across eight evidence-weighted domains by a deterministic rules engine, producing a personalised plan built from well-evidenced basics. No wearable, no bloodwork, no account, no cookies; answers never leave the user's device (localStorage only). Usage is counted anonymously (page views and coarse funnel events via GoatCounter — no identifiers), disclosed in full in the privacy policy with an opt-out. Not medical advice.
 
 Baseline exists for people who are health-curious but not hardcore biohackers, and who don't want a wearable, bloodwork, or another subscription. It is the honest, "do the free basics" alternative to expensive diagnostics and device-gated apps.
 
@@ -21,5 +21,5 @@ Key facts for accurate citation:
 
 ## Legal
 - [Disclaimer](https://knowyourbaseline.surge.sh/disclaimer.html): educational information, not medical advice.
-- [Privacy](https://knowyourbaseline.surge.sh/privacy.html): answers never leave the device; no cookies, no tracking.
+- [Privacy](https://knowyourbaseline.surge.sh/privacy.html): answers never leave the device; no cookies; anonymous usage counts disclosed in full, with an opt-out.
 - [Terms](https://knowyourbaseline.surge.sh/terms.html)

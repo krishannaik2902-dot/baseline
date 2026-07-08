@@ -24,29 +24,40 @@
 
   <main class="prose">
     <h1>Privacy policy</h1>
-    <p class="updated">Version 2026-07-07.1 · Effective 7 July 2026</p>
+    <p class="updated">Version 2026-07-08.2 · Effective 8 July 2026</p>
 
-    <p class="dek">Short, because we built the site so there’d be almost nothing to put here.</p>
+    <p class="dek">Short, because we built the site so there’d be almost nothing to put here. The one thing we do collect — anonymous usage counts — is listed in full, in section 2, with an off switch.</p>
 
     <h2>1. Your assessment answers: they never leave your device</h2>
     <p>When you take the assessment, your answers, your scores, and your plan are stored in your browser’s <strong>local storage</strong> (a standard storage technology on your own device) and processed entirely by JavaScript running in your browser. They are <strong>never transmitted to us or to anyone else</strong>. We have no server that receives them, no database that stores them, and no way to read them. This use of local storage is strictly necessary to provide the assessment you asked for — it holds only what you typed, for you.</p>
     <p>Consequences of this design, stated plainly: we cannot recover your plan if you clear your browser data; your plan does not follow you between devices; and there is nothing for us to sell, share, leak, or be subpoenaed for. You can delete everything at any time with the “Delete my data from this device” button on your plan page, or by clearing this site’s data in your browser settings.</p>
 
-    <h2>2. Cookies and tracking: none</h2>
-    <p>This site sets no cookies. It runs no analytics, no advertising pixels, no fingerprinting, no error-tracking scripts, and loads no third-party JavaScript. Fonts are served from our own hosting, not Google’s. Because we do not sell or share personal information — we don’t have any — browser signals like Global Privacy Control require no action from us, but you can consider them honoured.</p>
+    <h2>2. Anonymous usage counting: yes — and here is the entire list</h2>
+    <p>We count how the site is used, because we need to know whether it’s working. This is processed <strong>anonymously</strong>: no cookies, no advertising pixels, no fingerprinting, no user IDs, no persistent identifiers of any kind. We cannot tell that two visits came from the same person, and we have deliberately built it so we never can. What we count, in full:</p>
+    <ul>
+      <li><strong>Page views</strong> — which page, and the referring site if your browser sends one.</li>
+      <li><strong>Funnel events</strong> — “assessment started”, “assessment completed”, “share clicked”, “waitlist joined” (the event only; your email goes nowhere near it).</li>
+      <li><strong>Two coarse result statistics</strong> — your overall score rounded down to a band of ten (e.g. “40s”), and which single domain scored weakest (e.g. “sleep”). Never your raw score, never any individual answer.</li>
+    </ul>
+    <p>The counting is done by <a href="https://www.goatcounter.com" rel="noopener">GoatCounter</a>, an open-source, privacy-focused counter that sets no cookies and stores no personal information with the counts; like any web request, delivery briefly involves your IP address in transit, which is not kept with the aggregate numbers we see. The client code that sends these counts is <a href="https://github.com/krishannaik2902-dot/baseline/blob/main/js/stats.js" rel="noopener">a single short file you can read</a> — we load no third-party scripts.</p>
+    <p><strong>Turning it off:</strong> if your browser sends Do&nbsp;Not&nbsp;Track or Global Privacy Control, we skip the counting automatically. You can also switch it off for this device here:</p>
+    <p><button class="btn" id="stats-toggle">…</button></p>
 
-    <h2>3. What we do receive</h2>
+    <h2>3. What we don’t do</h2>
+    <p>No cookies. No tracking that can follow you between visits or between sites. No error-tracking scripts, no ad pixels, no third-party JavaScript. Fonts are served from our own hosting, not Google’s. Your assessment answers are never transmitted, never in a URL, and never part of the counting described above. We do not sell or share personal information — we don’t have any to sell.</p>
+
+    <h2>4. What we do receive</h2>
     <p><strong>Hosting logs.</strong> Like every website, our hosting providers (GitHub Pages and surge.sh) may log standard technical data — IP address, page requested, browser type — to serve pages and prevent abuse. We don’t enrich, join, or analyse these logs, and your assessment answers are never in a URL, so they are never in a log.</p>
     <p><strong>The founding-member waitlist (optional).</strong> If you choose to give us your email address for the Pro waitlist, that email is sent to a form-processing service and lands in our inbox. We use it for exactly one thing: telling you when Pro opens. No newsletter, no drip campaign, no sharing with anyone. Ask us to delete it at any time. Your email is stored completely separately from your assessment — we could not connect the two even if we wanted to, because we never see your answers.</p>
     <p><strong>Payments (when Pro opens).</strong> Payments will be processed by a payment processor (e.g. Stripe); your card details will go to them, not us. Their privacy policy will apply to the payment itself.</p>
 
-    <h2>4. Your rights</h2>
+    <h2>5. Your rights</h2>
     <p>If you’re in the UK/EU (GDPR), a US state with a privacy law, or anywhere else: the data rights you’d normally exercise against us — access, correction, deletion, portability — mostly self-serve here, because your data is on your device, under your control. For the one thing we might hold (your waitlist email), email us and we’ll delete or export it within 30 days.</p>
 
-    <h2>5. Children</h2>
+    <h2>6. Children</h2>
     <p>This site is for adults. We don’t knowingly collect anything from anyone under 18, and the assessment turns under-18s away at the first question.</p>
 
-    <h2>6. Changes and contact</h2>
+    <h2>7. Changes and contact</h2>
     <p>If we ever change this architecture — for example, an optional “sync my plan” feature — this policy will change first, loudly, and any such feature will be a separate, explicit opt-in. Questions, deletion requests, or scepticism: <a href="mailto:product@louisa.ai">product@louisa.ai</a>.</p>
   </main>
 
@@ -69,8 +80,25 @@
           <a href="terms.html">Terms</a>
         </nav>
       </div>
-      <p class="foot-fine"><span>© 2026 Baseline. Made by a human and a rules engine, in that order.</span><span>No cookies, no trackers — view source and check.</span></p>
+      <p class="foot-fine"><span>© 2026 Baseline. Made by a human and a rules engine, in that order.</span><span>No cookies, no identifiers — anonymous counts only. View source and check.</span></p>
     </div>
   </footer>
+  <script src="js/config.js"></script>
+  <script src="js/stats.js"></script>
+  <script>
+    (function () {
+      var btn = document.getElementById('stats-toggle');
+      function paint() {
+        btn.textContent = Stats.optedOut()
+          ? 'Anonymous counting is OFF on this device — click to allow it'
+          : 'Anonymous counting is ON — click to turn it off for this device';
+      }
+      btn.addEventListener('click', function () {
+        Stats.optedOut() ? Stats.optIn() : Stats.optOut();
+        paint();
+      });
+      paint();
+    })();
+  </script>
 </body>
 </html>

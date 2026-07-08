@@ -32,10 +32,13 @@ people to tear the weights apart.
 
 Two design decisions I think are the interesting part:
 
-1. Everything runs client-side. Your answers live in localStorage and never hit
-a server — there's nothing for me to store, sell, or leak, and no cookie banner
-because there are no cookies. That also happens to sidestep most of the
-health-data compliance surface.
+1. Answers run client-side only. They live in localStorage and never hit a
+server — there's nothing for me to store, sell, or leak, and no cookie banner
+because there are no cookies. The only telemetry is anonymous, identifier-free
+counts (GoatCounter: page views, completions, coarse score bands) — the client
+is one short readable file, DNT/GPC are respected, and the full list is in the
+privacy policy with an opt-out. That sidesteps most of the health-data
+compliance surface.
 
 2. It refuses to output a "biological age" number. The scientists who build
 epigenetic clocks say they don't validate single-person interventions, so a fake
@@ -71,7 +74,7 @@ actually move healthspan and builds you a plan from the boring, well-evidenced
 basics — sleep, movement, food, stress, connection.
 
 What's different:
-• Free, no account, and your answers never leave your device (localStorage only).
+• Free, no account, and your answers never leave your device (localStorage only; usage counted anonymously — no identifiers, disclosed in full).
 • Every recommendation shows its evidence grade and a named source. No secret sauce.
 • A deterministic rules engine, not a chatbot — same answers, same plan.
 • It refuses to sell you supplements or guess your "biological age".
@@ -102,7 +105,7 @@ question set and where you think the domain weights are wrong.
 **Title:**
 
 ```
-I built a free longevity self-assessment that runs entirely in your browser — no signup, no tracking, and it shows the source behind every recommendation
+I built a free longevity self-assessment that runs entirely in your browser — no signup, no cookies, and it shows the source behind every recommendation
 ```
 
 **Body:**
@@ -115,7 +118,9 @@ every recommendation.
 
 Two things I'm a bit proud of:
 - It's client-side only. Your answers stay in your browser; there's no server,
-no account, no cookies. Clear your data and it's gone.
+no account, no cookies. Clear your data and it's gone. (Usage is counted
+anonymously — no identifiers — and the privacy page lists exactly what, with an
+off switch.)
 - It refuses to give you a fake "biological age" number, and it keeps a running
 page of popular trends it does NOT recommend (CGMs for healthy people, hydrogen
 water, $6k cold plunges) with the reasoning.
@@ -199,10 +204,10 @@ habits. So I built the 80%, personalised, with the sources shown.
 Every recommendation shows the rule that fired, an evidence grade, and a named
 source. The whole thing is open source. I want people to argue with the weights.
 
-4/ The privacy design is the part I'm most happy with. Everything runs in your
-browser. localStorage only. No server, no account, no cookies, no analytics.
-There's nothing for me to sell or leak. It's a feature, and it's also most of
-the compliance surface, gone.
+4/ The privacy design is the part I'm most happy with. Your answers run in
+your browser. localStorage only. No server, no account, no cookies. The only
+telemetry: anonymous counts with zero identifiers, listed in full on the
+privacy page with an off switch. Nothing to sell, nothing to leak.
 
 5/ It refuses to output a "biological age". The scientists who build those
 clocks say they can't validate one person's intervention. So it scores current

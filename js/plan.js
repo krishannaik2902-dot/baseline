@@ -142,6 +142,17 @@
     root.querySelectorAll('.domain-fill[data-w]').forEach(el => { el.style.width = el.dataset.w + '%'; });
   }));
 
+  // count each completion once, coarsely: a score decile and the weakest
+  // domain — never raw scores, never answers (see privacy.html)
+  try {
+    const COUNTED_KEY = 'baseline.stats.lastCounted';
+    if (window.Stats && localStorage.getItem(COUNTED_KEY) !== state.completedAt) {
+      Stats.event('score-band-' + (Math.min(9, Math.floor(plan.overall / 10)) * 10) + 's');
+      if (priorities.length) Stats.event('weakest-' + priorities[0].id);
+      localStorage.setItem(COUNTED_KEY, state.completedAt);
+    }
+  } catch (e) { /* counting is never worth an error */ }
+
   // Share the score only — never the answers. This is the growth loop that
   // respects the privacy promise: nothing about the user leaves their device.
   const shareBtn = document.getElementById('share-btn');
@@ -150,6 +161,7 @@
   const shareUrl = site.replace(/plan\.html$/, '') + 'index.html';
   const shareText = `I scored ${plan.overall}/100 on my Baseline health check — the honest, no-wearable one. Take yours free (no signup, nothing leaves your device):`;
   shareBtn.addEventListener('click', async () => {
+    if (window.Stats) Stats.event('share-clicked');
     const data = { title: 'Baseline', text: shareText, url: shareUrl.replace(/index\.html$/, '') };
     if (navigator.share) {
       try { await navigator.share(data); return; } catch (e) { /* fall through to copy */ }

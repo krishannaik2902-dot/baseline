@@ -10,8 +10,12 @@ Patrick, and the underlying research).
 **Architecture: static, no build step, no server, no database.**
 All answers live in the visitor's `localStorage` and never leave their device.
 That is the product's privacy story and its compliance posture in one decision:
-no cookies → no cookie banner; no accounts → no breach surface; no tracking →
-nothing to disclose beyond the waitlist form.
+no cookies → no cookie banner; no accounts → no breach surface. Usage is
+counted anonymously via GoatCounter (`js/stats.js` — no cookies, no
+identifiers, DNT/GPC respected, opt-out on the privacy page); the complete
+event list is disclosed in privacy.html and must stay in sync with stats.js.
+Dashboard: https://knowyourbaseline.goatcounter.com (credentials in
+PRIVATE-credentials.txt, gitignored).
 
 ## Files
 

@@ -1,7 +1,7 @@
 /*
- * Local persistence. Everything stays on the user's device — no cookies,
- * no server, no analytics. That is a product decision, not an accident:
- * see /privacy.html.
+ * Local persistence. Answers and plans stay on the user's device — no cookies,
+ * no server. That is a product decision, not an accident: see /privacy.html.
+ * (Anonymous, identifier-free usage counts live separately in stats.js.)
  */
 
 'use strict';

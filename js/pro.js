@@ -68,6 +68,7 @@
           body: JSON.stringify({ email, heard, _subject: 'Founding list signup', page: context }),
         });
         if (!res.ok) throw new Error('bad status ' + res.status);
+        if (window.Stats) Stats.event('waitlist-joined');
         markJoined(email);
         status.textContent = 'Done. You’re on the list — one email at launch, no drip campaign, promise.';
         form.querySelector('.waitlist-row').style.display = 'none';
