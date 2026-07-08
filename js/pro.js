@@ -40,7 +40,7 @@
           <input type="email" required placeholder="you@example.com" aria-label="Email address">
           <button class="btn btn-primary" type="submit">Save my spot</button>
         </div>
-        <input type="text" class="waitlist-heard" placeholder="Optional: how did you hear about us?" aria-label="How did you hear about us" style="width:100%;margin-top:0.5rem;font-family:var(--sans);font-size:0.92rem;padding:0.6rem 0.9rem;border:1px solid var(--line);background:var(--paper);color:var(--ink);border-radius:2px;">
+        <input type="text" class="waitlist-heard" placeholder="Optional: how did you hear about us?" aria-label="How did you hear about us">
         <p class="waitlist-status" aria-live="polite"></p>
       </form>`;
 

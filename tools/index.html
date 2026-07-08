@@ -44,10 +44,16 @@
     <h2 id="protein">Daily protein target</h2>
     <p>Protein defends muscle as you age. A widely used active-and-older-adult range is around 1.6 grams per kilogram of bodyweight — higher than the old 0.8g/kg guideline, which was set to prevent deficiency, not to preserve muscle. This gives you a sensible range, not a rule.</p>
     <div class="calc">
-      <label for="weight">Your weight</label>
-      <input type="number" id="weight" min="30" max="250" value="75" style="max-width:8rem"> <span id="weight-unit-label">kg</span>
-      <label for="weight-unit">Units</label>
-      <select id="weight-unit"><option value="kg">Kilograms</option><option value="lb">Pounds</option></select>
+      <div class="calc-row">
+        <div>
+          <label for="weight">Your weight</label>
+          <input type="number" id="weight" min="30" max="250" value="75">
+        </div>
+        <div>
+          <label for="weight-unit">Units</label>
+          <select id="weight-unit"><option value="kg">Kilograms</option><option value="lb">Pounds</option></select>
+        </div>
+      </div>
       <div class="calc-result" id="protein-out" aria-live="polite"></div>
     </div>
 
@@ -67,14 +73,24 @@
 
   <footer class="site-foot">
     <div class="shell">
-      <p class="foot-disclaimer">Baseline is educational information, not medical advice, diagnosis, or treatment.</p>
-      <div class="foot-links">
-        <a href="../methodology.html">Methodology</a>
-        <a href="../disclaimer.html">Disclaimer</a>
-        <a href="../privacy.html">Privacy</a>
-        <a href="../terms.html">Terms</a>
+      <div class="foot-grid">
+        <div>
+          <p class="foot-brand">Baseline</p>
+          <p class="foot-disclaimer">Baseline is educational information, not medical advice, diagnosis, or treatment. No doctor–patient relationship is created by using it. Talk to a healthcare professional before changing your diet, exercise, supplements, or medication.</p>
+        </div>
+        <nav class="foot-links">
+          <a href="../assessment.html">The assessment</a>
+          <a href="../methodology.html">Methodology</a>
+          <a href="../skeptics.html">What we’re skeptical of</a>
+          <a href="index.html">Free tools</a>
+          <a href="../learn/index.html">Journal</a>
+          <a href="../pricing.html">Pricing</a>
+          <a href="../disclaimer.html">Disclaimer</a>
+          <a href="../privacy.html">Privacy</a>
+          <a href="../terms.html">Terms</a>
+        </nav>
       </div>
-      <p class="foot-fine">© 2026 Baseline.</p>
+      <p class="foot-fine"><span>© 2026 Baseline. Made by a human and a rules engine, in that order.</span><span>No cookies, no trackers — view source and check.</span></p>
     </div>
   </footer>
 
@@ -101,10 +117,9 @@
 
     // protein target
     var wt = document.getElementById('weight'), unit = document.getElementById('weight-unit'),
-        unitLabel = document.getElementById('weight-unit-label'), protOut = document.getElementById('protein-out');
+        protOut = document.getElementById('protein-out');
     function calcProtein() {
       var w = parseFloat(wt.value); if (!w) return;
-      unitLabel.textContent = unit.value;
       var kg = unit.value === 'lb' ? w * 0.453592 : w;
       var low = Math.round(kg * 1.2), high = Math.round(kg * 1.6);
       protOut.innerHTML = 'Aim for roughly <strong>' + low + '–' + high + ' g</strong> of protein a day.' +

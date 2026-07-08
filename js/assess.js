@@ -9,6 +9,10 @@
 
   const DRAFT_KEY = 'baseline.draft.v1';
   const TERMS_VERSION = '2026-07-07.1';
+  const DOMAIN_LABELS = {
+    body: 'About you', sleep: 'Sleep', movement: 'Movement', nutrition: 'Food',
+    mind: 'Stress & mind', connection: 'People & purpose', substances: 'Substances', habits: 'Daily structure',
+  };
   let answers = {};
   let idx = 0;
   let consented = false;
@@ -99,7 +103,7 @@
     root.innerHTML = `
       <section class="q">
         <div class="q-progress"><div class="q-progress-bar" style="width:${Math.round((idx / total) * 100)}%"></div></div>
-        <p class="q-count">${n} of ${total}</p>
+        <p class="q-count"><span class="q-domain">${DOMAIN_LABELS[q.domain] || ''}</span><span class="q-sep">·</span><span>${n} of ${total}</span></p>
         <h1 class="q-text">${q.text}</h1>
         ${q.help ? `<p class="q-help">${q.help}</p>` : ''}
         ${body}

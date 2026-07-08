@@ -67,6 +67,10 @@
     <section class="plan-score">
       <p class="plan-kicker">Your baseline, ${new Date(state.completedAt).toLocaleDateString('en-GB', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
       <div class="score-dial"><span class="score-num">${plan.overall}</span><span class="score-max">/100</span></div>
+      <div class="ruler" role="img" aria-label="Your score of ${plan.overall} on a scale from 0 to 100">
+        <div class="ruler-track"><div class="ruler-marker" style="left:${plan.overall}%"></div></div>
+        <div class="ruler-labels"><span>0</span><span>25</span><span>50</span><span>75</span><span>100</span></div>
+      </div>
       <p class="score-word">That’s ${scoreWord(plan.overall)}.</p>
       <p class="score-note">This number is a snapshot of habits, not a verdict on you — and definitely not a diagnosis. It exists so that in eight weeks you can beat it.</p>
       <div class="share-row">
@@ -85,9 +89,9 @@
       <h2>Where you stand</h2>
       <div class="domain-bars">
         ${priorities.map(p => `
-          <div class="domain-row">
+          <div class="domain-row${p.score < 50 ? ' is-weak' : ''}">
             <span class="domain-label">${p.label}</span>
-            <div class="domain-track"><div class="domain-fill" style="width:${p.score}%"></div></div>
+            <div class="domain-track"><div class="domain-fill" data-w="${p.score}" style="width:0%"></div></div>
             <span class="domain-score">${p.score}</span>
           </div>`).join('')}
       </div>
@@ -132,6 +136,11 @@
       <p>Everything on this page is educational information mapped from your self-reported answers. It is not medical advice, a diagnosis, or a treatment plan, and no doctor–patient relationship exists. Talk to a healthcare professional before changing medication, diet, or exercise — especially if you have a health condition. <a href="disclaimer.html">Full disclaimer</a>.</p>
     </section>
   `;
+
+  // animate the domain bars in on first paint
+  requestAnimationFrame(() => requestAnimationFrame(() => {
+    root.querySelectorAll('.domain-fill[data-w]').forEach(el => { el.style.width = el.dataset.w + '%'; });
+  }));
 
   // Share the score only — never the answers. This is the growth loop that
   // respects the privacy promise: nothing about the user leaves their device.
