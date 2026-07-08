@@ -24,13 +24,13 @@ const CONFIG = {
   // FormSubmit AJAX endpoint (set after activation at deploy time).
   // Falls back to a mailto: link when empty, so the CTA never dead-ends.
   formEndpoint: '',
-  contactEmail: 'product@louisa.ai',
+  contactEmail: 'krishannaik2902@gmail.com',
 
   // --- Anonymous usage counting (js/stats.js) -------------------------------
   // GoatCounter: no cookies, no identifiers, aggregate counts only.
   // The complete list of events sent is documented in privacy.html.
   // Set to '' to disable all counting site-wide.
-  statsEndpoint: 'https://knowyourbaseline.goatcounter.com/count',
+  statsEndpoint: 'https://baseline-kn.goatcounter.com/count',
 };
 
 if (typeof module !== 'undefined') module.exports = { CONFIG };
